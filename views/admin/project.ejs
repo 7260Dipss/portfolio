@@ -1,0 +1,77 @@
+<%-include("navbar.ejs")%>
+<form action="/admin/save_project" method="post" enctype="multipart/form-data">
+    <div class="container bg-dark text-white p-4">
+        <h1>Project Details</h1>
+        <div class="row">
+            <div class="col-md-4">
+                Project Photo
+                <input type="file" name="project_photo"  class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                Prject Title
+                <input type="text" name="project_title" class="form-control">
+            </div>
+           
+            <div class="col-md-4">
+                Project Github Link
+                <input type="url" name="github_link"  class="form-control">
+            </div>
+            <div class="col-md-12 mt-3">
+                Project Details
+                <textarea name="project_details"  class="form-control"></textarea>
+            </div>
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary mt-4 text-center">Save Project</button>
+            </div>
+
+            </div>
+            </div>
+            </form>
+            <br><br><br>
+
+
+
+                      
+<div class="container bg-dark text-white p-4">
+    <h1>Project List</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-dark table-sm">
+                <tr>
+                    <th>Action</th>
+                    <th>Srno.</th>
+                     <th>Project Image</th>
+                     <th>Project Title</th>
+                     <th>Project Github link</th>
+                     <th>Project Details</th>
+                     
+
+                </tr>
+                <% for(var i =0; i<pro.length;i++){%>
+                    <tr>
+                    
+                        <td>
+                            <button class="btn btn-primary btn-sm">
+                                <a href="/admin/edit_project/<%=pro[i].project_id%>"> <i class="fa fa-edit text-white"></i></a>
+                               </button>
+                               <button class="btn btn-danger btn-sm">
+                                   <a href="/admin/delete_project/<%=pro[i].project_id%>"> <i class="fa fa-trash text-white"></i></a>
+                               </button>
+                    </td>
+                    <td><%=i+1%></td>
+                    <td>
+                        <img src="/<%=pro[i].project_photo%>" width="100px"></td>
+                    <td><%=pro[i].project_title%></td>
+                    <td><%=pro[i].github_link%></td>
+                    <td><%=pro[i].project_details%></td>
+                  
+
+                    </tr>
+                    <% } %>
+                    </table>
+                    </div>
+                    </div>
+                    </div>
+                    
+<%-include("footer.ejs")%>

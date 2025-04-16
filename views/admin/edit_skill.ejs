@@ -1,0 +1,25 @@
+<%-include("navbar.ejs")%>
+<form action="/admin/update_skills" method="post" enctype="multipart/form-data">
+    <div class="container bg-dark text-white p-4">
+        <h1>Skills Details</h1>
+        <div class="row">
+            <input type="hidden" name="skill_id" value="<%=skill_info.skill_id%>">
+            <div class="col-md-4">
+                Skill Image
+                <input type="file" name="skill_image" class="form-control">
+                </div>
+                <div class="col-md-2 mb-2">
+                <img src="/<%=skill_info.skill_image%>" width="100px">
+            </div>
+            <div class="col-md-4 mb-2">
+                Skill Title
+                <input type="text" name="skill_title" class="form-control" value="<%=skill_info.skill_title%>">
+            </div>
+            <div class="col-md-2">
+                <br>
+                <button class="btn btn-primary">Update Skill</button>
+            </div>
+            </div>
+            </div>
+            </form>
+<%-include("footer.ejs")%>

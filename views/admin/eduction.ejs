@@ -1,0 +1,72 @@
+<%-include("navbar.ejs")%>
+<form action="/admin/save_eduction" method="post" enctype="multipart/form-data">
+    <div class="container bg-dark text-white p-4">
+        <h1>Eduction Details</h1>
+        <div class="row">
+            <div class="col-md-3">
+                Unviversity
+                <input type="text" name="university" class="form-control">
+            </div>
+
+            <div class="col-md-3">
+                Qualification
+                <input type="text" name="qualification" class="form-control">
+            </div>
+            <div class="col-md-3">
+                Passing Year
+                <input type="number" name="passing_year" class="form-control">
+            </div>
+
+            <div class="col-md-2">
+                Percentage
+                <input type="number" name="percentage" class="form-control">
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-sm mt-4">Save</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+<br><br><br>
+
+
+
+<div class="container bg-dark text-white p-4">
+    <h1>Eduction List</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-dark table-sm">
+                <tr>
+                    <th>Action</th>
+                    <th>Srno.</th>
+                    <th>Unviversity</th>
+                    <th>Qualification</th>                
+                    <th>passing_year</th>
+                    <th>Percentage</th>
+                </tr>
+                <% for(var i =0; i<list.length;i++){%>
+                    <tr>
+                    
+                        <td>
+                            <button class="btn btn-primary btn-sm">
+                                <a href="/admin/edit_equction/<%=list[i].eduction_id%>"> <i class="fa fa-edit text-white"></i></a>
+                               </button>
+                               <button class="btn btn-danger btn-sm">
+                                   <a href="/admin/delete_eduction/<%=list[i].eduction_id%>"> <i class="fa fa-trash text-white"></i></a>
+                               </button>
+                    </td>
+                    <td><%=i+1%></td>
+                    <td><%=list[i].university%></td>
+                    <td><%=list[i].qualification%></td>
+                    <td><%=list[i].passing_year%></td>
+                    <td><%=list[i].percentage%></td>
+                    </tr>
+
+                    <% } %>
+            </table>
+        </div>
+
+        </div>
+        </div>
+<%-include("footer.ejs")%>
